@@ -50,8 +50,7 @@
 
 ;; Always load newest byte code
 (setq display-line-numbers 'relative)
-(global-set-key (kbd "C-c C-f") 'grep-find)
-(global-set-key (kbd "C-c C-s") 'find-grep-dired)
+
 
 
 ;; write config here
@@ -60,9 +59,53 @@
 (setq search-wrap-around t)
 (setq load-prefer-newer t)
 
-
 ;; font
-(set-frame-font "Victor Mono-18")
+(set-frame-font "PT Mono-16")
+(set-frame-font "Victor Mono-14")
+(set-frame-font "Fira Code-12")
+(set-frame-font "JetBrains Mono-12")
+(set-frame-font "Input-12")
+(set-frame-font "Inconsolata-18")
+(set-frame-font "Iosevka-18")
+(set-frame-font "Iosevka-14")
+(set-frame-font "Monaco")
+(set-frame-font "Monospace-17")
+(set-frame-font "Menlo")
+(set-frame-font "Andale Mono")
+(set-frame-font "Comic Code-12")
+(set-frame-font "Courier New-14")
+(set-frame-font "Consolas-14")
+(set-frame-font "Roboto Mono-12")
+(set-frame-font "Ubuntu Mono-18")
+(set-frame-font "Source Code Pro-14")
+(set-frame-font "Space Mono-16")
+(set-frame-font "Liberation Mono-14")
+(set-frame-font "Monospace-14")
+(set-frame-font "Input Mono-12")
+(set-frame-font "Hack-14")
+(set-frame-font "MonaspiceXe Nerd Font Mono")
+(set-frame-font "DejaVu Sans Mono-12")
+
+
+(setq sp-highlight-pair-overlay nil)
+
+(setq-default line-spacing 5)
+
+(defun xah-toggle-line-spacing ()
+  "Toggle line spacing between no extra space to extra half line height.
+URL `http://xahlee.info/emacs/emacs/emacs_toggle_line_spacing.html'
+Version 2017-06-02"
+  (interactive)
+  (if line-spacing
+      (setq line-spacing nil)
+    (setq line-spacing 0.4))
+  (redraw-frame (selected-frame)))
+
+;; (xah-toggle-line-spacing)
+
+
+;; fiplr file searchq
+(global-set-key (kbd "C-c C-f") 'fiplr-find-file)
 
 ;; Multiple Cursor
 (require 'multiple-cursors)
@@ -72,17 +115,16 @@
 (global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
 
+;; swipper isearch
+;; (require 'swiper-isearch)
+;; (global-set-key (kbd "C-s") 'swiper-isearch)
+
+
 ;; display fill indicator
 (global-display-fill-column-indicator-mode 72)
 (blink-cursor-mode 1)
 
-;; Dired
-;; (require 'dired-x)
-;; (setq dired-omit-files
-;;       (concat dired-omit-files "\\|^\\..+$"))
-;; (setq-default dired-dwim-target t)
-;; (setq dired-listing-switches "-alh")
-
+;; (load-theme 'poet-dark)
 
 
 ;; Define Prelude's directory structure
