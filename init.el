@@ -86,9 +86,8 @@
 (set-frame-font "MonaspiceXe Nerd Font Mono")
 (set-frame-font "DejaVu Sans Mono-12")
 
-
+;; Remove open bracket hightlights
 (setq sp-highlight-pair-overlay nil)
-
 (setq-default line-spacing 5)
 
 (defun xah-toggle-line-spacing ()
