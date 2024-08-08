@@ -101,11 +101,22 @@ Version 2017-06-02"
     (setq line-spacing 0.4))
   (redraw-frame (selected-frame)))
 
-;; (xah-toggle-line-spacing)
-
 
 ;; fiplr file searchq
 (global-set-key (kbd "C-c C-f") 'fiplr-find-file)
+
+;; set width to 80 column length if multiple window is open
+(defun set-window-width (n)
+  "Set the selected window's width."
+  (adjust-window-trailing-edge (selected-window) (- n (window-width)) t))
+
+(defun set-80-columns ()
+  "Set the selected window to 80 columns."
+  (interactive)
+  (set-window-width 81))
+
+(global-set-key (kbd "C-x ~") 'set-80-columns)
+
 
 ;; Multiple Cursor
 (require 'multiple-cursors)
