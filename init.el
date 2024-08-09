@@ -60,31 +60,38 @@
 (setq load-prefer-newer t)
 
 ;; font
-(set-frame-font "PT Mono-16")
-(set-frame-font "Victor Mono-14")
-(set-frame-font "Fira Code-12")
-(set-frame-font "JetBrains Mono-12")
-(set-frame-font "Input-12")
-(set-frame-font "Inconsolata-18")
-(set-frame-font "Iosevka-18")
-(set-frame-font "Iosevka-14")
-(set-frame-font "Monaco")
-(set-frame-font "Monospace-17")
-(set-frame-font "Menlo")
-(set-frame-font "Andale Mono")
-(set-frame-font "Comic Code-12")
-(set-frame-font "Courier New-14")
-(set-frame-font "Consolas-14")
-(set-frame-font "Roboto Mono-12")
-(set-frame-font "Ubuntu Mono-18")
-(set-frame-font "Source Code Pro-14")
-(set-frame-font "Space Mono-16")
-(set-frame-font "Liberation Mono-14")
-(set-frame-font "Monospace-14")
-(set-frame-font "Input Mono-12")
-(set-frame-font "Hack-14")
-(set-frame-font "MonaspiceXe Nerd Font Mono")
-(set-frame-font "DejaVu Sans Mono-12")
+;; (set-frame-font "PT Mono-16")
+;; (set-frame-font "Victor Mono-14")
+;; (set-frame-font "Fira Code-11")
+;; (set-frame-font "JetBrains Mono-14")
+;; (set-frame-font "Input-14")
+;; (set-frame-font "Inconsolata-14")
+;; (set-frame-font "Monoid-11")
+;; (set-frame-font "Iosevka-15")
+;; (set-frame-font "Iosevka SS18")
+;; (set-frame-font "Iosevka Fixed Slab")
+;; (set-frame-font "Iosevka Nerd Font Mono-15")
+;; (set-frame-font "agave")
+;; (set-frame-font "Monaco")
+;; (set-frame-font "Monospace-17")
+;; (set-frame-font "Menlo")
+;; (set-frame-font "Andale Mono")
+;; (set-frame-font "Comic Code-12")
+;; (set-frame-font "Courier New-12")
+;; (set-frame-font "Consolas-14")
+;; (set-frame-font "Roboto Mono-14")
+;; (set-frame-font "Ubuntu Mono-14")
+;; (set-frame-font "Source Code Pro-14")
+;; (set-frame-font "Space Mono-16")
+;; (set-frame-font "Liberation Mono-14")
+;; (set-frame-font "Monospace-14")
+;; (set-frame-font "Input Mono-14")
+;; (set-frame-font "Hack-12")
+;; (set-frame-font "MonaspiceXe Nerd Font Mono-14")
+;; (set-frame-font "BitstromWera Nerd Font")
+;; (set-frame-font "DejaVu Sans Mono")
+;; (set-frame-font "Mononoki-16")
+(set-frame-font "NanumGothicCoding-14")
 
 ;; Remove open bracket hightlights
 (setq sp-highlight-pair-overlay nil)
@@ -112,7 +119,7 @@ Version 2017-06-02"
 (defun set-80-columns ()
   "Set the selected window to 80 columns."
   (interactive)
-  (set-window-width 81))
+  (set-window-width 80))
 
 (global-set-key (kbd "C-x ~") 'set-80-columns)
 
@@ -125,16 +132,18 @@ Version 2017-06-02"
 (global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
 
-;; swipper isearch
-;; (require 'swiper-isearch)
-;; (global-set-key (kbd "C-s") 'swiper-isearch)
-
 
 ;; display fill indicator
 (global-display-fill-column-indicator-mode 72)
 (blink-cursor-mode 1)
 
-;; (load-theme 'poet-dark)
+
+;; Fill column at 72 character
+(setq-default fill-column 72)
+(add-hook 'prog-mode-hook #'auto-fill-mode)
+(use-package adaptive-wrap
+  :ensure t
+  :hook (prog-mode . adaptive-wrap-prefix-mode))
 
 
 ;; Define Prelude's directory structure
