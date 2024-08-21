@@ -121,6 +121,24 @@ Version 2017-06-02"
   (interactive)
   (set-window-width 80))
 
+(defun set-window-body-width (columns)
+  "Set the selected window's body width to COLUMNS, excluding the menu
+bar and other UI elements."
+  (let* ((window (selected-window))
+         (frame (selected-frame))
+         (body-width (window-body-width window))
+         (char-width (frame-char-width))
+         (line-height (frame-char-height))
+         (menu-bar-height (if (menu-bar-mode) (frame-parameter nil 'menu-bar-lines) 0))
+         (line-number-width (if (bound-and-true-p display-line-numbers-mode)
+                                (line-number-display-width) 0))
+         (desired-width (* columns char-width))
+         (current-width (frame-pixel-width))
+         (total-width (+ desired-width line-number-width (* menu-bar-height line-height))))
+    ;; Set the frame width to accommodate the desired body width
+    (set-frame-width frame (/ total-width char-width))
+    (set-frame-height frame (frame-height frame))))
+
 (global-set-key (kbd "C-x ~") 'set-80-columns)
 
 
@@ -144,6 +162,9 @@ Version 2017-06-02"
 (use-package adaptive-wrap
   :ensure t
   :hook (prog-mode . adaptive-wrap-prefix-mode))
+
+;; set window length to 80 character
+unifize-server/apps/api/resources/migrations/sql/
 
 
 ;; Define Prelude's directory structure
