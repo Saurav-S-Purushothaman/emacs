@@ -121,6 +121,12 @@ Version 2017-06-02"
   (interactive)
   (set-window-width 80))
 
+;; Use this if 'menu-bar--display-line-number-mode is not none
+(defun set-85-columns ()
+  "Set the selected window's body width to 85 columsn"
+  (interactive)
+  (set-window-width 86))
+
 (defun set-window-body-width (columns)
   "Set the selected window's body width to COLUMNS, excluding the menu
 bar and other UI elements."
