@@ -51,8 +51,6 @@
 ;; Always load newest byte code
 (setq display-line-numbers 'relative)
 
-
-
 ;; write config here
 
 ;; I search
@@ -117,7 +115,6 @@ bar and other UI elements."
 
 (global-set-key (kbd "C-x ~") 'set-80-columns)
 
-
 ;; Multiple Cursor
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -134,7 +131,10 @@ bar and other UI elements."
 
 ;; Fill column at 72 character
 (setq-default fill-column 72)
+
 (add-hook 'prog-mode-hook #'auto-fill-mode)
+(auto-fill-mode t)
+
 (use-package adaptive-wrap
   :ensure t
   :hook (prog-mode . adaptive-wrap-prefix-mode))
