@@ -61,6 +61,19 @@
 (set-frame-font "NanumGothicCoding-14")
 
 
+;; Copy line down
+(defun duplicate-line-down ()
+  "Duplicate the current line and move the cursor to the new line."
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (newline)
+  (yank))
+
+(global-set-key (kbd "C-S-d") 'duplicate-line-down)
+
+
 ;; Remove open bracket hightlights
 (setq sp-highlight-pair-overlay nil)
 (setq-default line-spacing 5)
