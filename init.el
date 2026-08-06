@@ -80,3 +80,8 @@
      indentation
      space-before-tab
      space-after-tab)))
+
+(use-package cider
+  :ensure t)
+
+(setq cider-lein-command "/opt/homebrew/bin/lein")
