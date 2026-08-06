@@ -143,3 +143,7 @@
 
 (use-package clojure-mode)
 (use-package magit)
+
+(use-package expand-region
+  :bind
+  ("C-=" . er/expand-region))
