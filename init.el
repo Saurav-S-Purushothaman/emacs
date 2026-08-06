@@ -11,9 +11,6 @@
 
 ;; Adding melpa
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(require 'package)
-
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/")
              t)
@@ -67,3 +64,19 @@
          ("M-A" . marginalia-cycle))
   :init
   (marginalia-mode))
+
+;; Show unwanted whitespace in programming and text buffers.
+(use-package whitespace
+  :ensure nil
+  :hook ((prog-mode text-mode conf-mode) . whitespace-mode)
+  :custom
+  (whitespace-line-column 100)
+  (whitespace-style
+   '(face
+     trailing
+     tabs
+     lines-tail
+     empty
+     indentation
+     space-before-tab
+     space-after-tab)))
