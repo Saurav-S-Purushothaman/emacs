@@ -112,3 +112,9 @@
         scroll-margin 0)        ; important: scroll-margin>0 not yet supported
   :config
   (ultra-scroll-mode 1))
+
+;; Enable global auto-save to the actual file
+(auto-save-visited-mode 1)
+
+;; Optional: Set the idle delay in seconds (default is 5)
+(setq auto-save-visited-interval 5)
