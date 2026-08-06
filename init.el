@@ -33,6 +33,21 @@
   :init
   (savehist-mode))
 
+;; Remember recently opened files across Emacs restarts.
+(use-package recentf
+  :ensure nil
+  :custom
+  (recentf-max-saved-items 200)
+  (recentf-max-menu-items 25)
+  :init
+  (recentf-mode))
+
+;; Include recent files when switching with C-x b.
+(use-package consult
+  :bind
+  ("C-x b" . consult-buffer)
+  ("C-x C-r" . consult-recent-file))
+
 ;; Emacs minibuffer configurations.
 (use-package emacs
   :custom
@@ -88,3 +103,12 @@
   :ensure t)
 
 (setq cider-lein-command "/opt/homebrew/bin/lein")
+
+
+(use-package ultra-scroll
+  ;:vc (:url "https://github.com/jdtsmith/ultra-scroll") ; if desired (emacs>=v30)
+  :init
+  (setq scroll-conservatively 3 ; or whatever value you prefer, since v0.4
+        scroll-margin 0)        ; important: scroll-margin>0 not yet supported
+  :config
+  (ultra-scroll-mode 1))
