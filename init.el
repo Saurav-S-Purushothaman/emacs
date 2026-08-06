@@ -48,6 +48,17 @@
   ("C-x b" . consult-buffer)
   ("C-x C-r" . consult-recent-file))
 
+;; Keep generated/cache directories out of project file completion.
+(use-package project
+  :ensure nil
+  :custom
+  (project-vc-ignores
+   '(".clj-kondo/"
+     ".lsp/"
+     ".cpcache/"
+     "target/"
+     "node_modules/")))
+
 ;; Emacs minibuffer configurations.
 (use-package emacs
   :custom
@@ -118,3 +129,13 @@
 
 ;; Optional: Set the idle delay in seconds (default is 5)
 (setq auto-save-visited-interval 5)
+
+(use-package project
+  :ensure nil
+  :custom
+  (project-vc-ignores
+   '(".clj-kondo/"
+     ".lsp/"
+     ".cpcache/"
+     "target/"
+     "node_modules/")))
