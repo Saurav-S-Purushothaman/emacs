@@ -12,16 +12,13 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/")
              t)
-
 (package-initialize)
-
 (unless package-archive-contents
   (package-refresh-contents))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Enable Vertico.
 (use-package vertico
   :init
   (vertico-mode))
@@ -56,7 +53,6 @@
      ".cpcache/"
      "target/"
      "node_modules/")))
-
 
 (use-package emacs
   :custom
@@ -103,23 +99,18 @@
 
 (setq cider-lein-command "/opt/homebrew/bin/lein")
 
-;; Keep Lisp parentheses balanced while editing.
 (use-package paredit
   :hook ((emacs-lisp-mode clojure-mode cider-repl-mode) . paredit-mode))
 
-
 (use-package ultra-scroll
-  ;:vc (:url "https://github.com/jdtsmith/ultra-scroll") ; if desired (emacs>=v30)
   :init
-  (setq scroll-conservatively 3 ; or whatever value you prefer, since v0.4
-        scroll-margin 0)        ; important: scroll-margin>0 not yet supported
+  (setq scroll-conservatively 3
+        scroll-margin 0)
   :config
   (ultra-scroll-mode 1))
 
 ;; Enable global auto-save to the actual file
 (auto-save-visited-mode 1)
-
-;; Optional: Set the idle delay in seconds (default is 5)
 (setq auto-save-visited-interval 5)
 
 (use-package project
