@@ -139,3 +139,7 @@
      ".cpcache/"
      "target/"
      "node_modules/")))
+
+
+(use-package clojure-mode)
+(use-package magit)
