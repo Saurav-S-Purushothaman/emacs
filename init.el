@@ -115,6 +115,10 @@
 
 (setq cider-lein-command "/opt/homebrew/bin/lein")
 
+;; Keep Lisp parentheses balanced while editing.
+(use-package paredit
+  :hook ((emacs-lisp-mode clojure-mode cider-repl-mode) . paredit-mode))
+
 
 (use-package ultra-scroll
   ;:vc (:url "https://github.com/jdtsmith/ultra-scroll") ; if desired (emacs>=v30)
