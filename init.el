@@ -7,7 +7,7 @@
 
 ;; Theme and font
 (load-theme 'modus-vivendi)
-(set-face-attribute 'default nil :font "sf mono 13")
+(set-face-attribute 'default nil :font "Iosevka 15")
 
 ;; Adding melpa
 (require 'package)
