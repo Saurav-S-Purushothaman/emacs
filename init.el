@@ -81,6 +81,9 @@
      space-before-tab
      space-after-tab)))
 
+;; Delete trailing whitespace before saving.
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+
 (use-package cider
   :ensure t)
 
