@@ -133,3 +133,7 @@
 
 ;; Delete selected items
 (delete-selection-mode 1)
+
+(use-package which-key
+  :init
+  (which-key-mode))
