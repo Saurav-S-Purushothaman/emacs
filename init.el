@@ -175,3 +175,8 @@
 
 (use-package indent-bars
   :hook ((python-mode yaml-mode) . indent-bars-mode))
+
+
+(use-package golden-ratio)
+(require 'golden-ratio)
+(golden-ratio-mode 1)
