@@ -189,3 +189,6 @@
 	 ("C-S-<down>" . move-text-down)))
 
 (scroll-bar-mode -1)
+
+(use-package crux
+  :bind ("s-j" . crux-top-join-line))
