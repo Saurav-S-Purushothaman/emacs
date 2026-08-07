@@ -4,7 +4,7 @@
   (load custom-file))
 
 ;; Theme and font
-(load-theme 'modus-vivendi)
+(load-theme 'modus-vivendi-tinted)
 (set-face-attribute 'default nil :font "Iosevka 15")
 
 ;; Adding melpa
@@ -54,14 +54,6 @@
      "target/"
      "node_modules/")))
 
-(use-package emacs
-  :custom
-  (context-menu-mode t)
-  (enable-recursive-minibuffers t)
-  (read-extended-command-predicate #'command-completion-default-include-p)
-  (minibuffer-prompt-properties
-   '(read-only t cursor-intangible t face minibuffer-prompt)))
-
 (use-package orderless
   :custom
   (completion-styles '(orderless basic))
@@ -95,7 +87,8 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (use-package cider
-  :ensure t)
+  :ensure t
+  :hook (clojure-mode . cider-mode))
 
 (setq cider-lein-command "/opt/homebrew/bin/lein")
 
@@ -147,3 +140,36 @@
 
 (use-package undo-tree)
 (global-undo-tree-mode)
+
+(use-package corfu
+  :custom
+  (corfu-auto t)
+  (corfu-auto-prefix 2)
+  (corfu-auto-delay 0.2)
+  (corfu-cycle t)
+  (corfu-preview-current nil)
+  :init
+  (global-corfu-mode))
+
+;; Extra completion-at-point backends. Major-mode completions still run first;
+;; these provide useful fallbacks for files, words, and symbols.
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file t)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev t)
+  (add-to-list 'completion-at-point-functions #'cape-keyword t))
+
+(use-package emacs
+  :custom
+  (tab-always-indent 'complete)
+  (text-mode-ispell-word-completion nil)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  (context-menu-mode t)
+  (enable-recursive-minibuffers t)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  (minibuffer-prompt-properties
+   '(read-only t cursor-intangible t face minibuffer-prompt)))
+
+(add-hook 'eshell-mode-hook (lambda ()
+                              (setq-local corfu-auto nil)
+                              (corfu-mode)))
