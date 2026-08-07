@@ -180,3 +180,6 @@
 (use-package golden-ratio)
 (require 'golden-ratio)
 (golden-ratio-mode 1)
+
+(use-package idle-highlight-mode)
+(global-idle-highlight-mode t)
