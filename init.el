@@ -183,3 +183,7 @@
 
 (use-package idle-highlight-mode)
 (global-idle-highlight-mode t)
+
+(use-package move-text
+  :bind (("C-S-<up>" . move-text-up)
+	 ("C-S-<down>" . move-text-down)))
