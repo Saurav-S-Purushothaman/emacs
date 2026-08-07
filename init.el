@@ -63,7 +63,7 @@
 
 (use-package marginalia
   :bind (:map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
+        ("M-A" . marginalia-cycle))
   :init
   (marginalia-mode))
 
@@ -76,10 +76,9 @@
   (whitespace-style
    '(face
      trailing
-     tabs
      lines-tail
      empty
-     indentation
+     ;; indentation
      space-before-tab
      space-after-tab)))
 
@@ -171,5 +170,8 @@
    '(read-only t cursor-intangible t face minibuffer-prompt)))
 
 (add-hook 'eshell-mode-hook (lambda ()
-                              (setq-local corfu-auto nil)
+                            (setq-local corfu-auto nil)
                               (corfu-mode)))
+
+(use-package indent-bars
+  :hook ((python-mode yaml-mode) . indent-bars-mode))
