@@ -187,3 +187,5 @@
 (use-package move-text
   :bind (("C-S-<up>" . move-text-up)
 	 ("C-S-<down>" . move-text-down)))
+
+(scroll-bar-mode -1)
