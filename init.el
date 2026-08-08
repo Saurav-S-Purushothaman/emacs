@@ -193,6 +193,12 @@
 (use-package crux
   :bind ("s-j" . crux-top-join-line))
 
+(use-package mwim
+  :ensure t
+  :bind
+  ("C-a" . mwim-beginning)
+  ("C-e" . mwim-end))
+
 (use-package multiple-cursors)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C->") 'mc/mark-previous-like-this)
