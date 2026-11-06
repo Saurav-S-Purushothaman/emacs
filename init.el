@@ -129,7 +129,7 @@
 
 (use-package with-editor
   :custom
-  (with-editor-emacsclient-executable "/opt/homebrew/opt/emacs-plus@30/bin/emacsclient"))
+  (with-editor-emacsclient-executable "/opt/homebrew/opt/emacs/bin/emacsclient"))
 
 (use-package magit)
 
@@ -211,7 +211,14 @@
   :bind (("C-a" . mwim-beginning-of-code-or-line)
          ("C-e" . mwim-end-of-code-or-line)))
 
-(scroll-bar-mode -1)
+;; (scroll-bar-mode -1)
+
+;; Pulsar. Cursor should pulse when moving
+(use-package pulsar
+  :ensure t
+  :config
+  (pulsar-global-mode 1))
+
 
 (use-package multiple-cursors)
 (require 'multiple-cursors)
@@ -352,13 +359,6 @@
 ;; Add a custom theme path.
 
 (setq ring-bell-function #'ignore)
-
-
-;; Pulsar. Cursor should pulse when moving
-(use-package pulsar
-  :ensure t
-  :config
-  (pulsar-global-mode 1))
 
 (load (expand-file-name "~/.quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "sbcl")
