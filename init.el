@@ -368,3 +368,10 @@
   (lambda (reducing-fn)
     (lambda (result element)
       (funcall reducing-fn resutl (funcall f element)))))
+
+(defun filterer (predicate?)
+  (lambda (reducing-fn)
+    (lambda (result element)
+      (if (funcall predicate? element)
+	  (funcall reducing-fn result element)
+	result))))
