@@ -8,7 +8,7 @@
 
 ;; custom theme path
 (add-to-list 'custom-theme-load-path "~/themes")
-(load-theme 'ef-arcadia)
+(load-theme 'gruvbox-dark-hard)
 (set-face-attribute 'default nil :font "liberation mono 14")
 ;;  (set-frame-font "reddit Mono 13")
 ;;  (set-frame-font "red hat mono")
@@ -362,3 +362,9 @@
 
 (load (expand-file-name "~/.quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "sbcl")
+
+
+(defun mapper (f)
+  (lambda (reducing-fn)
+    (lambda (result element)
+      (funcall reducing-fn resutl (funcall f element)))))
